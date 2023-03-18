@@ -1,0 +1,122 @@
+{
+  "version": 4,
+  "include": [
+    "base/windows.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "vs2022-default",
+      "displayName": "Visual Studio 2022 64-bit",
+      "inherits": "windows-only",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64"
+    },
+    {
+      "name": "vs2022-default-32",
+      "displayName": "Visual Studio 2022 32-bit",
+      "inherits": "vs2022-default",
+      "architecture": "Win32",
+      "environment": {"ARCHITECTURE_32BIT": "1"}
+    },
+    {
+      "name": "vs2022-vcpkg-submodule",
+      "displayName": "Visual Studio 2022 64-bit, using vcpkg as submodule",
+      "inherits": ["vs2022-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-windows"}
+    },
+    {
+      "name": "vs2022-vcpkg-submodule-32",
+      "displayName": "Visual Studio 2022 32-bit, using vcpkg as submodule",
+      "inherits": ["vs2022-default-32", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-windows"}
+    },
+    {
+      "name": "vs2022-vcpkg-local",
+      "displayName": "Visual Studio 2022 64-bit, using local vcpkg",
+      "inherits": ["vs2022-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-windows"}
+    },
+    {
+      "name": "vs2022-vcpkg-local-32",
+      "displayName": "Visual Studio 2022 32-bit, using local vcpkg",
+      "inherits": ["vs2022-default-32", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-windows"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "vs2022-default",
+      "configurePreset": "vs2022-default",
+      "displayName": "Build preset for vs2022-default",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "vs2022-default-32",
+      "configurePreset": "vs2022-default-32",
+      "displayName": "Build preset for vs2022-default-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "vs2022-vcpkg-submodule",
+      "configurePreset": "vs2022-vcpkg-submodule",
+      "displayName": "Build preset for vs2022-vcpkg-submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "vs2022-vcpkg-submodule-32",
+      "configurePreset": "vs2022-vcpkg-submodule-32",
+      "displayName": "Build preset for vs2022-vcpkg-submodule-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "vs2022-vcpkg-local",
+      "configurePreset": "vs2022-vcpkg-local",
+      "displayName": "Build preset for vs2022-vcpkg-local",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "vs2022-vcpkg-local-32",
+      "configurePreset": "vs2022-vcpkg-local-32",
+      "displayName": "Build preset for vs2022-vcpkg-local-32",
+      "inherits": "windows-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "vs2022-default",
+      "configurePreset": "vs2022-default",
+      "displayName": "Test preset for vs2022-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "vs2022-default-32",
+      "configurePreset": "vs2022-default-32",
+      "displayName": "Test preset for vs2022-default-32, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "vs2022-vcpkg-submodule",
+      "configurePreset": "vs2022-vcpkg-submodule",
+      "displayName": "Test preset for vs2022-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "vs2022-vcpkg-submodule-32",
+      "configurePreset": "vs2022-vcpkg-submodule-32",
+      "displayName": "Test preset for vs2022-vcpkg-submodule-32, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "vs2022-vcpkg-local",
+      "configurePreset": "vs2022-vcpkg-local",
+      "displayName": "Test preset for vs2022-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "vs2022-vcpkg-local-32",
+      "configurePreset": "vs2022-vcpkg-local-32",
+      "displayName": "Test preset for vs2022-vcpkg-local-32, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    }
+  ]
+}

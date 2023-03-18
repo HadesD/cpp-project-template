@@ -1,0 +1,8 @@
+{
+  "name": "test101",
+  "version": "0.0.1",
+  "dependencies": [
+    "catch2"
+  ],
+  "builtin-baseline": "31a159c1cae2bf905299085d9ef01bdfea0ca7b8"
+}

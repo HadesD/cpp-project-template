@@ -1,0 +1,40 @@
+{
+  "version": 4,
+  "include": [
+    "base.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "windows-only",
+      "inherits": "base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-only",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-only",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "version": 4,
+  "include": [
+    "base/windows.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "ninjam-msys2-default",
+      "displayName": "Ninja Multi-Config MSYS2 MINGW (run in MINGW64 console)",
+      "inherits": "windows-only",
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "g++"}
+    },
+    {
+      "name": "ninjam-msys2-32-default",
+      "displayName": "Ninja Multi-Config MSYS2 MINGW (run in MINGW32 console)",
+      "inherits": "ninjam-msys2-default"
+    },
+    {
+      "name": "ninjam-msys2-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config MSYS2 MINGW, using vcpkg as submodule (run in MINGW64 console)",
+      "inherits": ["ninjam-msys2-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"}
+    },
+    {
+      "name": "ninjam-msys2-32-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config MSYS2 MINGW, using vcpkg as submodule (run in MINGW32 console)",
+      "inherits": ["ninjam-msys2-32-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"}
+    },
+    {
+      "name": "ninjam-msys2-vcpkg-local",
+      "displayName": "Ninja Multi-Config MSYS2 MINGW, using local vcpkg (run in MINGW64 console)",
+      "inherits": ["ninjam-msys2-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"}
+    },
+    {
+      "name": "ninjam-msys2-32-vcpkg-local",
+      "displayName": "Ninja Multi-Config MSYS2 MINGW, using local vcpkg (run in MINGW32 console)",
+      "inherits": ["ninjam-msys2-32-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ninjam-msys2-default",
+      "configurePreset": "ninjam-msys2-default",
+      "displayName": "Build preset for ninjam-msys2-default, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "ninjam-msys2-32-default",
+      "configurePreset": "ninjam-msys2-32-default",
+      "displayName": "Build preset for ninjam-msys2-32-default, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "ninjam-msys2-vcpkg-submodule",
+      "configurePreset": "ninjam-msys2-vcpkg-submodule",
+      "displayName": "Build preset for ninjam-msys2-vcpkg-submodule, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "ninjam-msys2-32-vcpkg-submodule",
+      "configurePreset": "ninjam-msys2-32-vcpkg-submodule",
+      "displayName": "Build preset for ninjam-msys2-32-vcpkg-submodule, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "ninjam-msys2-vcpkg-local",
+      "configurePreset": "ninjam-msys2-vcpkg-local",
+      "displayName": "Build preset for ninjam-msys2-vcpkg-local, using vcpkg as local",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "ninjam-msys2-32-vcpkg-local",
+      "configurePreset": "ninjam-msys2-32-vcpkg-local",
+      "displayName": "Build preset for ninjam-msys2-32-vcpkg-local, using vcpkg as local",
+      "inherits": "windows-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "ninjam-msys2-default",
+      "configurePreset": "ninjam-msys2-default",
+      "displayName": "Test preset for ninjam-msys2-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "ninjam-msys2-32-default",
+      "configurePreset": "ninjam-msys2-32-default",
+      "displayName": "Test preset for ninjam-msys2-32-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "ninjam-msys2-vcpkg-submodule",
+      "configurePreset": "ninjam-msys2-vcpkg-submodule",
+      "displayName": "Test preset for ninjam-msys2-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "ninjam-msys2-32-vcpkg-submodule",
+      "configurePreset": "ninjam-msys2-32-vcpkg-submodule",
+      "displayName": "Test preset for ninjam-msys2-32-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "ninjam-msys2-vcpkg-local",
+      "configurePreset": "ninjam-msys2-vcpkg-local",
+      "displayName": "Test preset for ninjam-msys2-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "ninjam-msys2-32-vcpkg-local",
+      "configurePreset": "ninjam-msys2-32-vcpkg-local",
+      "displayName": "Test preset for ninjam-msys2-32-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    }
+  ]
+}

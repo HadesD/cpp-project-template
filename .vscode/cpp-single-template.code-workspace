@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"command-runner.terminal.name": "runCommand",
+		"command-runner.terminal.autoClear": true,
+		"command-runner.terminal.autoFocus": true,
+		"command-runner.commands": {
+			"Clang.Format": "& 'C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang-format' -i ${file}",
+			"Clang.Tidy": "& 'C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang-tidy' --quiet --format-style=file -p ${workspaceFolder}/build/ninjam-msys2-novcpkg ${file} --fix"
+		}
+	}
+}

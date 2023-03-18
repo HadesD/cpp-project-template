@@ -1,0 +1,67 @@
+{
+  "version": 4,
+  "include": [
+    "base/linux.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "clang-default",
+      "displayName": "Ninja Multi-Config Linux with Clang",
+      "inherits": "linux-only",
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "clang++"}
+    },
+    {
+      "name": "clang-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config Linux with Clang, using vcpkg as submodule",
+      "inherits": ["clang-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-linux"}
+    },
+    {
+      "name": "clang-vcpkg-local",
+      "displayName": "Ninja Multi-Config Linux with Clang, using local vcpkg",
+      "inherits": ["clang-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-linux"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "clang-default",
+      "configurePreset": "clang-default",
+      "displayName": "Build preset for clang-default",
+      "inherits": "linux-only"
+    },
+    {
+      "name": "clang-vcpkg-submodule",
+      "configurePreset": "clang-vcpkg-submodule",
+      "displayName": "Build preset for clang-vcpkg-submodule",
+      "inherits": "linux-only"
+    },
+    {
+      "name": "clang-vcpkg-local",
+      "configurePreset": "clang-vcpkg-local",
+      "displayName": "Build preset for clang-vcpkg-local",
+      "inherits": "linux-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "clang-default",
+      "configurePreset": "clang-default",
+      "displayName": "Test preset for clang-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "linux-only"]
+    },
+    {
+      "name": "clang-vcpkg-submodule",
+      "configurePreset": "clang-vcpkg-submodule",
+      "displayName": "Test preset for clang-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "linux-only"]
+    },
+    {
+      "name": "clang-vcpkg-local",
+      "configurePreset": "clang-vcpkg-local",
+      "displayName": "Test preset for clang-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "linux-only"]
+    }
+  ]
+}

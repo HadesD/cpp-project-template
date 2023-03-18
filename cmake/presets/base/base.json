@@ -1,0 +1,39 @@
+{
+  "version": 4,
+  "configurePresets": [
+    {
+      "name": "base",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "hidden": true
+    },
+    {
+      "name": "vcpkg-cache",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "$env{VCPKG_TARGET_TRIPLET}",
+        "tsl-robin-map_DIR": "${sourceDir}/build/${presetName}/vcpkg_installed/$env{VCPKG_TARGET_TRIPLET}/share/robin-map"
+      },
+      "hidden": true
+    },
+    {
+      "name": "vcpkg-submodule",
+      "inherits": ["base", "vcpkg-cache"],
+      "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "hidden": true
+    },
+    {
+      "name": "vcpkg-local",
+      "inherits": ["base", "vcpkg-cache"],
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "hidden": true
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "output": {"outputOnFailure": true},
+      "execution": {"noTestsAction": "error", "stopOnFailure": true}
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "version": 4,
+  "include": [
+    "base/linux.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "gcc-default",
+      "displayName": "Ninja Multi-Config Linux",
+      "inherits": "linux-only",
+      "generator": "Ninja Multi-Config"
+    },
+    {
+      "name": "gcc-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config Linux, using vcpkg as submodule",
+      "inherits": ["gcc-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-linux"}
+    },
+    {
+      "name": "gcc-vcpkg-local",
+      "displayName": "Ninja Multi-Config Linux, using local vcpkg",
+      "inherits": ["gcc-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-linux"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "gcc-default",
+      "configurePreset": "gcc-default",
+      "displayName": "Build preset for gcc-default",
+      "inherits": "linux-only"
+    },
+    {
+      "name": "gcc-vcpkg-submodule",
+      "configurePreset": "gcc-vcpkg-submodule",
+      "displayName": "Build preset for gcc-vcpkg-submodule",
+      "inherits": "linux-only"
+    },
+    {
+      "name": "gcc-vcpkg-local",
+      "configurePreset": "gcc-vcpkg-local",
+      "displayName": "Build preset for gcc-vcpkg-local",
+      "inherits": "linux-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "gcc-default",
+      "configurePreset": "gcc-default",
+      "displayName": "Test preset for gcc-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "linux-only"]
+    },
+    {
+      "name": "gcc-vcpkg-submodule",
+      "configurePreset": "gcc-vcpkg-submodule",
+      "displayName": "Test preset for gcc-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "linux-only"]
+    },
+    {
+      "name": "gcc-vcpkg-local",
+      "configurePreset": "gcc-vcpkg-local",
+      "displayName": "Test preset for gcc-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "linux-only"]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "version": 4,
+  "include": [
+    "base.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "linux-only",
+      "inherits": "base",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "hidden": true
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "linux-only",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "hidden": true
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "linux-only",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "hidden": true
+    }
+  ]
+}

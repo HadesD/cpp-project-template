@@ -1,0 +1,120 @@
+{
+  "version": 4,
+  "include": [
+    "base/windows.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "mingw-clang-default",
+      "displayName": "Ninja Multi-Config MINGW (run in MINGW64 console)",
+      "inherits": "windows-only",
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "clang++"}
+    },
+    {
+      "name": "mingw-clang-default-32",
+      "displayName": "Ninja Multi-Config MINGW (run in MINGW32 console)",
+      "inherits": "mingw-clang-default"
+    },
+    {
+      "name": "mingw-clang-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config MINGW, using vcpkg as submodule (run in MINGW64 console)",
+      "inherits": ["mingw-clang-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"}
+    },
+    {
+      "name": "mingw-clang-vcpkg-submodule-32",
+      "displayName": "Ninja Multi-Config MINGW, using vcpkg as submodule (run in MINGW32 console)",
+      "inherits": ["mingw-clang-default-32", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"}
+    },
+    {
+      "name": "mingw-clang-vcpkg-local",
+      "displayName": "Ninja Multi-Config MINGW, using local vcpkg (run in MINGW64 console)",
+      "inherits": ["mingw-clang-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"}
+    },
+    {
+      "name": "mingw-clang-vcpkg-local-32",
+      "displayName": "Ninja Multi-Config MINGW, using local vcpkg (run in MINGW32 console)",
+      "inherits": ["mingw-clang-default-32", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "mingw-clang-default",
+      "configurePreset": "mingw-clang-default",
+      "displayName": "Build preset for mingw-clang-default, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-clang-default-32",
+      "configurePreset": "mingw-clang-default-32",
+      "displayName": "Build preset for mingw-clang-default, using vcpkg as submodule-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-clang-vcpkg-submodule",
+      "configurePreset": "mingw-clang-vcpkg-submodule",
+      "displayName": "Build preset for mingw-clang-vcpkg-submodule, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-clang-vcpkg-submodule-32",
+      "configurePreset": "mingw-clang-vcpkg-submodule-32",
+      "displayName": "Build preset for mingw-clang-vcpkg-submodule, using vcpkg as submodule-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-clang-vcpkg-local",
+      "configurePreset": "mingw-clang-vcpkg-local",
+      "displayName": "Build preset for mingw-clang-vcpkg-local, using vcpkg as local",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-clang-vcpkg-local-32",
+      "configurePreset": "mingw-clang-vcpkg-local-32",
+      "displayName": "Build preset for mingw-clang-vcpkg-local, using vcpkg as local-32",
+      "inherits": "windows-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "mingw-clang-default",
+      "configurePreset": "mingw-clang-default",
+      "displayName": "Test preset for mingw-clang-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-clang-default-32",
+      "configurePreset": "mingw-clang-default-32",
+      "displayName": "Test preset for mingw-clang-default, remember to pass -C <Debug/Release> to ctest-32",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-clang-vcpkg-submodule",
+      "configurePreset": "mingw-clang-vcpkg-submodule",
+      "displayName": "Test preset for mingw-clang-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-clang-vcpkg-submodule-32",
+      "configurePreset": "mingw-clang-vcpkg-submodule-32",
+      "displayName": "Test preset for mingw-clang-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest-32",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-clang-vcpkg-local",
+      "configurePreset": "mingw-clang-vcpkg-local",
+      "displayName": "Test preset for mingw-clang-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-clang-vcpkg-local-32",
+      "configurePreset": "mingw-clang-vcpkg-local-32",
+      "displayName": "Test preset for mingw-clang-vcpkg-local, remember to pass -C <Debug/Release> to ctest-32",
+      "inherits": ["base", "windows-only"]
+    }
+  ]
+}

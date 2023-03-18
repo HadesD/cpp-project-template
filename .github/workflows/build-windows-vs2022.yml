@@ -1,0 +1,24 @@
+name: build-windows-vs2022
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - uses: lukka/get-cmake@latest
+
+      - name: Restore artifacts, or setup vcpkg (do not install any package)
+        uses: lukka/run-vcpkg@v10
+
+      - name: Run CMake consuming CMakePreset.json and vcpkg.json by mean of vcpkg.
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: 'vs2022-vcpkg-submodule'
+          buildPreset: 'vs2022-vcpkg-submodule'
+          buildPresetCmdString: "[`--build`, `--preset`, `$[env.BUILD_PRESET_NAME]`, `--config`, `Release`]"
+          testPreset: 'vs2022-vcpkg-submodule'
+          testPresetCmdString: "[`--preset`, `$[env.TEST_PRESET_NAME]`, `-C`, `Release`]"

@@ -1,0 +1,120 @@
+{
+  "version": 4,
+  "include": [
+    "base/windows.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "mingw-gcc-default",
+      "displayName": "Ninja Multi-Config MINGW (run in MINGW64 console)",
+      "inherits": "windows-only",
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "g++"}
+    },
+    {
+      "name": "mingw-gcc-default-32",
+      "displayName": "Ninja Multi-Config MINGW (run in MINGW32 console)",
+      "inherits": "mingw-gcc-default"
+    },
+    {
+      "name": "mingw-gcc-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config MINGW, using vcpkg as submodule (run in MINGW64 console)",
+      "inherits": ["mingw-gcc-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"}
+    },
+    {
+      "name": "mingw-gcc-vcpkg-submodule-32",
+      "displayName": "Ninja Multi-Config MINGW, using vcpkg as submodule (run in MINGW32 console)",
+      "inherits": ["mingw-gcc-default-32", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"}
+    },
+    {
+      "name": "mingw-gcc-vcpkg-local",
+      "displayName": "Ninja Multi-Config MINGW, using local vcpkg (run in MINGW64 console)",
+      "inherits": ["mingw-gcc-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"}
+    },
+    {
+      "name": "mingw-gcc-vcpkg-local-32",
+      "displayName": "Ninja Multi-Config MINGW, using local vcpkg (run in MINGW32 console)",
+      "inherits": ["mingw-gcc-default-32", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-mingw-dynamic"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "mingw-gcc-default",
+      "configurePreset": "mingw-gcc-default",
+      "displayName": "Build preset for mingw-gcc-default, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-gcc-default-32",
+      "configurePreset": "mingw-gcc-default-32",
+      "displayName": "Build preset for mingw-gcc-default, using vcpkg as submodule-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-gcc-vcpkg-submodule",
+      "configurePreset": "mingw-gcc-vcpkg-submodule",
+      "displayName": "Build preset for mingw-gcc-vcpkg-submodule, using vcpkg as submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-gcc-vcpkg-submodule-32",
+      "configurePreset": "mingw-gcc-vcpkg-submodule-32",
+      "displayName": "Build preset for mingw-gcc-vcpkg-submodule, using vcpkg as submodule-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-gcc-vcpkg-local",
+      "configurePreset": "mingw-gcc-vcpkg-local",
+      "displayName": "Build preset for mingw-gcc-vcpkg-local, using vcpkg as local",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "mingw-gcc-vcpkg-local-32",
+      "configurePreset": "mingw-gcc-vcpkg-local-32",
+      "displayName": "Build preset for mingw-gcc-vcpkg-local, using vcpkg as local-32",
+      "inherits": "windows-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "mingw-gcc-default",
+      "configurePreset": "mingw-gcc-default",
+      "displayName": "Test preset for mingw-gcc-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-gcc-default-32",
+      "configurePreset": "mingw-gcc-default-32",
+      "displayName": "Test preset for mingw-gcc-default, remember to pass -C <Debug/Release> to ctest-32",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-gcc-vcpkg-submodule",
+      "configurePreset": "mingw-gcc-vcpkg-submodule",
+      "displayName": "Test preset for mingw-gcc-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-gcc-vcpkg-submodule-32",
+      "configurePreset": "mingw-gcc-vcpkg-submodule-32",
+      "displayName": "Test preset for mingw-gcc-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest-32",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-gcc-vcpkg-local",
+      "configurePreset": "mingw-gcc-vcpkg-local",
+      "displayName": "Test preset for mingw-gcc-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "mingw-gcc-vcpkg-local-32",
+      "configurePreset": "mingw-gcc-vcpkg-local-32",
+      "displayName": "Test preset for mingw-gcc-vcpkg-local, remember to pass -C <Debug/Release> to ctest-32",
+      "inherits": ["base", "windows-only"]
+    }
+  ]
+}

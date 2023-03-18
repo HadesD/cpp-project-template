@@ -1,0 +1,119 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "(mingw-gcc-default) Debug build",
+			"command": "${env:MINGW_ROOT}/bin/cmake.exe",
+			"args": [
+				"--build",
+				"--preset",
+				"mingw-gcc-default",
+				"--config",
+				"Debug",
+				"--target",
+				"${workspaceFolderBasename}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"env": {
+					"PATH": "${env:PATH};${env:MINGW_ROOT}/bin"
+				}
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "(mingw-gcc-vcpkg-local) Debug build",
+			"command": "${env:MINGW_ROOT}/bin/cmake.exe",
+			"args": [
+				"--build",
+				"--preset",
+				"mingw-gcc-vcpkg-local",
+				"--config",
+				"Debug",
+				"--target",
+				"${workspaceFolderBasename}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"env": {
+					"PATH": "${env:PATH};${env:MINGW_ROOT}/bin"
+				}
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "(cl-default) Debug build",
+			"command": "cmake",
+			"args": [
+				"--build",
+				"--preset",
+				"cl-default",
+				"--config",
+				"Debug",
+				"--target",
+				"${workspaceFolderBasename}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "(cl-vcpkg-local) Debug build",
+			"command": "cmake",
+			"args": [
+				"--build",
+				"--preset",
+				"cl-vcpkg-local",
+				"--config",
+				"Debug",
+				"--target",
+				"${workspaceFolderBasename}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "(gcc-default) Debug build",
+			"command": "cmake",
+			"args": [
+				"--build",
+				"--preset",
+				"gcc-default",
+				"--config",
+				"Debug",
+				"--target",
+				"${workspaceFolderBasename}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "(gcc-vcpkg-local) Debug build",
+			"command": "cmake",
+			"args": [
+				"--build",
+				"--preset",
+				"gcc-vcpkg-local",
+				"--config",
+				"Debug",
+				"--target",
+				"${workspaceFolderBasename}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build"
+		}
+	]
+}

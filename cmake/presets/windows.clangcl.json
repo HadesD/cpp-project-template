@@ -1,0 +1,120 @@
+{
+  "version": 4,
+  "include": [
+    "base/windows.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "clangcl-default",
+      "displayName": "Ninja Multi-Config ClangCL 64-bit (run vcvars64.bat first)",
+      "inherits": "windows-only",
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "clang-cl"}
+    },
+    {
+      "name": "clangcl-default-32",
+      "displayName": "Ninja Multi-Config ClangCL 32-bit (run vcvars32.bat first)",
+      "inherits": "clangcl-default"
+    },
+    {
+      "name": "clangcl-vcpkg-submodule",
+      "displayName": "Ninja Multi-Config ClangCL 64-bit, using vcpkg as submodule (run vcvars64.bat first)",
+      "inherits": ["clangcl-default", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-windows"}
+    },
+    {
+      "name": "clangcl-vcpkg-submodule-32",
+      "displayName": "Ninja Multi-Config ClangCL 32-bit, using vcpkg as submodule (run vcvars32.bat first)",
+      "inherits": ["clangcl-default-32", "vcpkg-submodule"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-windows"}
+    },
+    {
+      "name": "clangcl-vcpkg-local",
+      "displayName": "Ninja Multi-Config ClangCL 64-bit, using local vcpkg (run vcvars64.bat first)",
+      "inherits": ["clangcl-default", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x64-windows"}
+    },
+    {
+      "name": "clangcl-vcpkg-local-32",
+      "displayName": "Ninja Multi-Config ClangCL 32-bit, using local vcpkg (run vcvars32.bat first)",
+      "inherits": ["clangcl-default-32", "vcpkg-local"],
+      "environment": {"VCPKG_TARGET_TRIPLET": "x86-windows"}
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "clangcl-default",
+      "configurePreset": "clangcl-default",
+      "displayName": "Build preset for clangcl-default",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "clangcl-default-32",
+      "configurePreset": "clangcl-default-32",
+      "displayName": "Build preset for clangcl-default-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "clangcl-vcpkg-submodule",
+      "configurePreset": "clangcl-vcpkg-submodule",
+      "displayName": "Build preset for clangcl-vcpkg-submodule",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "clangcl-vcpkg-submodule-32",
+      "configurePreset": "clangcl-vcpkg-submodule-32",
+      "displayName": "Build preset for clangcl-vcpkg-submodule-32",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "clangcl-vcpkg-local",
+      "configurePreset": "clangcl-vcpkg-local",
+      "displayName": "Build preset for clangcl-vcpkg-local",
+      "inherits": "windows-only"
+    },
+    {
+      "name": "clangcl-vcpkg-local-32",
+      "configurePreset": "clangcl-vcpkg-local-32",
+      "displayName": "Build preset for clangcl-vcpkg-local-32",
+      "inherits": "windows-only"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "clangcl-default",
+      "configurePreset": "clangcl-default",
+      "displayName": "Test preset for clangcl-default, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "clangcl-default-32",
+      "configurePreset": "clangcl-default-32",
+      "displayName": "Test preset for clangcl-default-32, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "clangcl-vcpkg-submodule",
+      "configurePreset": "clangcl-vcpkg-submodule",
+      "displayName": "Test preset for clangcl-vcpkg-submodule, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "clangcl-vcpkg-submodule-32",
+      "configurePreset": "clangcl-vcpkg-submodule-32",
+      "displayName": "Test preset for clangcl-vcpkg-submodule-32, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "clangcl-vcpkg-local",
+      "configurePreset": "clangcl-vcpkg-local",
+      "displayName": "Test preset for clangcl-vcpkg-local, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    },
+    {
+      "name": "clangcl-vcpkg-local-32",
+      "configurePreset": "clangcl-vcpkg-local-32",
+      "displayName": "Test preset for clangcl-vcpkg-local-32, remember to pass -C <Debug/Release> to ctest",
+      "inherits": ["base", "windows-only"]
+    }
+  ]
+}
